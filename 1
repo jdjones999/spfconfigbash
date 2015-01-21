@@ -1,7 +1,7 @@
 #!/bin/sh
-touch ~/Smartphone-Pentest-Framework/frameworkconsole/temp1 && touch /root/Smartphone-Pentest-Framework/frameworkconsole/temp2
+touch ~/Smartphone-Pentest-Framework/frameworkconsole/temp1 && touch ~/Smartphone-Pentest-Framework/frameworkconsole/temp2
 
-sed -n '5p' config.bak | awk -F "=" '{print $2}'| awk '{print $1}'>temp1
+sed -n '5p' config | awk -F "=" '{print $2}'| awk '{print $1}'>temp1
 
 ifconfig | sed -ne 's/^.*inet \(addr:\)*\([^ ]*\).*/\2/;te' -e 'd;:e' -e '/^127\./d;p'>temp2
 
@@ -9,7 +9,7 @@ oip=$(sed -n '1p' temp1)
 
 nip=$(sed -n '1p' temp2)
 
-sed -i "s/${oip}/${nip}/g" config.bak
+sed -i "s/${oip}/${nip}/g" config
 
 sleep 5
 rm temp1 && rm temp2
