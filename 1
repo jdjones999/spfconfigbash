@@ -1,5 +1,5 @@
 #!/bin/sh
-touch /root/Smartphone-Pentest-Framework/frameworkconsole/temp1 && touch /root/Smartphone-Pentest-Framework/frameworkconsole/temp2
+touch ~/Smartphone-Pentest-Framework/frameworkconsole/temp1 && touch /root/Smartphone-Pentest-Framework/frameworkconsole/temp2
 
 sed -n '5p' config.bak | awk -F "=" '{print $2}'| awk '{print $1}'>temp1
 
@@ -14,6 +14,6 @@ sed -i "s/${oip}/${nip}/g" config.bak
 sleep 5
 rm temp1 && rm temp2
 
-find /root/Smartphone-Pentest-Framework/frameworkconsole -name 'sed*' -exec rm {} \;
+find ~/Smartphone-Pentest-Framework/frameworkconsole -name 'sed*' -exec rm {} \;
 
 cd ~/Smartphone-Pentest-Framework/frameworkconsole && ./framework.py
